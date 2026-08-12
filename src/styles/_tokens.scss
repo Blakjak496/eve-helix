@@ -1,0 +1,37 @@
+// ============================================================
+// DESIGN TOKENS
+// ============================================================
+// Font families are resolved through next/font (see src/app/fonts.ts).
+// Each --font-* variable below layers the next/font variable over a
+// system fallback stack so the app never flashes unstyled text.
+
+:root {
+  --bg: #03080d;
+  --bg-raised: #07121a;
+  --bg-panel: rgba(5, 16, 24, 0.88);
+  --bg-panel-light: rgba(8, 23, 33, 0.92);
+
+  --border: rgba(82, 151, 181, 0.32);
+  --border-bright: rgba(93, 190, 224, 0.62);
+
+  --cyan: #55c7e8;
+  --cyan-bright: #8de5ff;
+  --cyan-dim: #347d96;
+
+  --text: #d8e5e9;
+  --text-muted: #71858e;
+  --text-dim: #435760;
+
+  --green: #55d69a;
+  --yellow: #e5a93d;
+  --red: #e05b63;
+  --blue: #4c9bd3;
+
+  --rail-width: 56px;
+  --sidebar-width: 250px;
+  --topbar-height: 62px;
+
+  --font-display: var(--font-rajdhani), "Arial Narrow", sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-roboto-mono), monospace;
+}

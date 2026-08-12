@@ -1,0 +1,43 @@
+// ============================================================
+// STATUS INDICATORS
+// ============================================================
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+
+  &::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  &--online {
+    color: var(--green);
+
+    &::before {
+      box-shadow: 0 0 8px var(--green);
+    }
+  }
+
+  &--warning {
+    color: var(--yellow);
+  }
+
+  &--danger {
+    color: var(--red);
+  }
+
+  &--offline {
+    color: var(--text-dim);
+  }
+}

@@ -1,0 +1,83 @@
+// ============================================================
+// MANUFACTURING TREE
+// ============================================================
+// Simple stacked/list rendering of build-tree nodes. The
+// mockup's connected node graph (arrows between tiers) is a
+// bespoke diagram layout — build that on top of these node
+// primitives when the real Manufacturing Planner tree lands.
+
+.build-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 20px;
+}
+
+.tree-node {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 180px;
+  padding: 10px 12px;
+
+  border: 1px solid var(--border);
+  background: rgba(5, 20, 28, 0.85);
+
+  transition: all 150ms ease;
+
+  &:hover {
+    border-color: var(--cyan-dim);
+    background: rgba(19, 60, 75, 0.25);
+
+    box-shadow: 0 0 18px rgba(67, 183, 216, 0.06);
+  }
+
+  &--build {
+    border-color: rgba(80, 205, 154, 0.4);
+  }
+
+  &--buy {
+    border-color: rgba(76, 155, 211, 0.4);
+  }
+
+  &--mixed {
+    border-color: rgba(229, 169, 61, 0.4);
+  }
+
+  &--invention {
+    border-color: rgba(76, 155, 211, 0.4);
+  }
+
+  img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  &__quantity {
+    margin-top: 3px;
+
+    color: var(--text-muted);
+
+    font-family: var(--font-mono);
+    font-size: 9px;
+  }
+
+  &__price {
+    margin-left: auto;
+
+    color: var(--green);
+
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+}
