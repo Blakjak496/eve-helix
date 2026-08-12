@@ -1,15 +1,32 @@
-import { FileText, LogOut, MessagesSquare, Settings } from "lucide-react";
+import { FileText, LogOut, Menu, MessagesSquare, Settings, X } from "lucide-react";
 
 import { StatusIndicator } from "@/components/ui/StatusIndicator";
 
 interface TopBarProps {
   characterName?: string;
   online?: boolean;
+  navOpen?: boolean;
+  onMenuClick?: () => void;
 }
 
-export function TopBar({ characterName = "Pilot", online = true }: TopBarProps) {
+export function TopBar({
+  characterName = "Pilot",
+  online = true,
+  navOpen = false,
+  onMenuClick,
+}: TopBarProps) {
   return (
     <header className="topbar">
+      <button
+        type="button"
+        className="topbar-menu"
+        aria-label={navOpen ? "Close navigation" : "Open navigation"}
+        aria-expanded={navOpen}
+        onClick={onMenuClick}
+      >
+        {navOpen ? <X size={18} /> : <Menu size={18} />}
+      </button>
+
       <div className="brand">
         EVE<span className="subtitle">Tools</span>
       </div>
