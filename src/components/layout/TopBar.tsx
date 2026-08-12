@@ -1,4 +1,11 @@
-import { FileText, LogOut, Menu, MessagesSquare, Settings, X } from "lucide-react";
+import {
+  FileText,
+  LogOut,
+  Menu,
+  MessagesSquare,
+  Settings,
+  X,
+} from "lucide-react";
 
 import { StatusIndicator } from "@/components/ui/StatusIndicator";
 
@@ -28,7 +35,7 @@ export function TopBar({
       </button>
 
       <div className="brand">
-        EVE<span className="subtitle">Tools</span>
+        NOX<span className="subtitle">Tools</span>
       </div>
 
       <div className="session">
@@ -39,7 +46,12 @@ export function TopBar({
       </div>
 
       <div className="topbar-actions">
-        <a className="topbar-button" href="https://discord.com" target="_blank" rel="noreferrer">
+        <a
+          className="topbar-button"
+          href="https://discord.com"
+          target="_blank"
+          rel="noreferrer"
+        >
           <MessagesSquare size={16} />
           <span>Discord</span>
         </a>

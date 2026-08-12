@@ -5,13 +5,13 @@
 .metric {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
 
   &__label {
     color: var(--text-muted);
 
     font-family: var(--font-display);
-    font-size: 9px;
+    font-size: 0.5625rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
@@ -20,7 +20,7 @@
     color: var(--text);
 
     font-family: var(--font-mono);
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   &--positive &__value {
@@ -44,7 +44,7 @@
   background: rgba(76, 145, 171, 0.12);
 
   .metric {
-    padding: 14px;
+    padding: 0.875rem;
 
     background: rgba(3, 14, 21, 0.8);
   }

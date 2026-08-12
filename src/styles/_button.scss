@@ -8,10 +8,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
 
-  min-height: 34px;
-  padding: 0 14px;
+  min-height: 2.125rem;
+  padding: 0 0.875rem;
 
   border: 1px solid var(--border);
   background: rgba(18, 53, 67, 0.28);
@@ -19,7 +19,7 @@
   color: var(--text);
 
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;

@@ -29,8 +29,8 @@
 
     position: absolute;
 
-    width: 12px;
-    height: 12px;
+    width: 0.75rem;
+    height: 0.75rem;
 
     pointer-events: none;
   }
@@ -73,8 +73,8 @@
   align-items: center;
   justify-content: space-between;
 
-  min-height: 44px;
-  padding: 0 14px;
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
 
   border-bottom: 1px solid rgba(83, 151, 181, 0.18);
 
@@ -84,7 +84,7 @@
     margin: 0;
 
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -92,17 +92,17 @@
 }
 
 .panel-body {
-  padding: 16px;
+  padding: 1rem;
 
   @media (max-width: 600px) {
-    padding: 12px;
+    padding: 0.75rem;
   }
 }
 
 .panel-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 
   color: var(--text-dim);
 
@@ -111,8 +111,8 @@
     align-items: center;
     justify-content: center;
 
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
 
     border: none;
     background: transparent;
