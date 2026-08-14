@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { AppShell } from "@/components/layout/AppShell";
+import { CortexSessionProvider } from "@/components/providers/CortexSessionProvider";
 
 import { inter, rajdhani, robotoMono } from "./fonts";
 import "./globals.scss";
@@ -17,7 +18,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${rajdhani.variable} ${inter.variable} ${robotoMono.variable}`}
     >
       <body>
-        <AppShell characterName="Blakjak">{children}</AppShell>
+        <CortexSessionProvider>
+          <AppShell>{children}</AppShell>
+        </CortexSessionProvider>
       </body>
     </html>
   );

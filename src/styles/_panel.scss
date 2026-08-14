@@ -6,13 +6,14 @@
 
 .panel {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(10, 29, 39, 0.92),
-      rgba(3, 13, 20, 0.94)
-    );
+  background: linear-gradient(
+    135deg,
+    rgba(10, 29, 39, 0.92),
+    rgba(3, 13, 20, 0.94)
+  );
 
   border: 1px solid var(--border);
 
@@ -92,6 +93,9 @@
 }
 
 .panel-body {
+  position: relative;
+  display: flex;
+  flex: 1;
   padding: 1rem;
 
   @media (max-width: 600px) {

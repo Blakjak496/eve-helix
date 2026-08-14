@@ -1,37 +1,50 @@
-// Page-specific layout for the Manufacturing Planner. The reusable
-// pieces (Panel, Field, Metric, DataGrid, DataTable, TreeNode) live in
-// the shared design system — this file only arranges them on the page.
-
 .grid {
   display: grid;
   grid-template-columns: 20rem minmax(0, 1fr) 20rem;
+  grid-template-areas:
+    "a a a b"
+    "a a a b";
   gap: 1rem;
   align-items: start;
 }
 
 .targetItem {
+  grid-area: a;
   grid-column: 1;
   grid-row: 1 / span 2;
 }
 
 .buildTreePanel {
-  grid-column: 2;
+  grid-area: a;
+  grid-column: 2 / span 2;
   grid-row: 1;
+  flex: 1;
+  height: 100%;
 }
 
 .breakdown {
-  grid-column: 2;
+  grid-area: a;
+  grid-column: 2 / span 2;
   grid-row: 2;
+  height: 100%;
 }
 
 .facility {
-  grid-column: 3;
+  grid-area: b;
   grid-row: 1;
+  height: 100%;
 }
 
 .jobPreview {
-  grid-column: 3;
+  grid-area: b;
   grid-row: 2;
+  height: 100%;
+}
+
+.bottomAlign {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
 }
 
 .shipRender {

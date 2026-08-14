@@ -29,24 +29,83 @@ interface BreakdownRow {
 }
 
 const breakdown: BreakdownRow[] = [
-  { item: "Raven Navy Issue Blueprint", required: "1", buildCost: "68,500,000 ISK", buyCost: "68,500,000 ISK", cheapest: "68,500,000 ISK", method: "Buy" },
-  { item: "Capital Construction Parts", required: "40", buildCost: "842,112,000 ISK", buyCost: "910,400,000 ISK", cheapest: "842,112,000 ISK", method: "Build" },
-  { item: "Fusion Thruster", required: "4", buildCost: "146,872,000 ISK", buyCost: "183,200,000 ISK", cheapest: "146,872,000 ISK", method: "Build" },
-  { item: "Construction Parts", required: "2,000", buildCost: "142,000,000 ISK", buyCost: "142,000,000 ISK", cheapest: "142,000,000 ISK", method: "Buy" },
-  { item: "Carbon Polymers", required: "5,000", buildCost: "95,500,000 ISK", buyCost: "95,500,000 ISK", cheapest: "95,500,000 ISK", method: "Buy" },
-  { item: "Sylramic Fibers", required: "8,000", buildCost: "72,000,000 ISK", buyCost: "72,000,000 ISK", cheapest: "72,000,000 ISK", method: "Buy" },
+  {
+    item: "Raven Navy Issue Blueprint",
+    required: "1",
+    buildCost: "68,500,000 ISK",
+    buyCost: "68,500,000 ISK",
+    cheapest: "68,500,000 ISK",
+    method: "Buy",
+  },
+  {
+    item: "Capital Construction Parts",
+    required: "40",
+    buildCost: "842,112,000 ISK",
+    buyCost: "910,400,000 ISK",
+    cheapest: "842,112,000 ISK",
+    method: "Build",
+  },
+  {
+    item: "Fusion Thruster",
+    required: "4",
+    buildCost: "146,872,000 ISK",
+    buyCost: "183,200,000 ISK",
+    cheapest: "146,872,000 ISK",
+    method: "Build",
+  },
+  {
+    item: "Construction Parts",
+    required: "2,000",
+    buildCost: "142,000,000 ISK",
+    buyCost: "142,000,000 ISK",
+    cheapest: "142,000,000 ISK",
+    method: "Buy",
+  },
+  {
+    item: "Carbon Polymers",
+    required: "5,000",
+    buildCost: "95,500,000 ISK",
+    buyCost: "95,500,000 ISK",
+    cheapest: "95,500,000 ISK",
+    method: "Buy",
+  },
+  {
+    item: "Sylramic Fibers",
+    required: "8,000",
+    buildCost: "72,000,000 ISK",
+    buyCost: "72,000,000 ISK",
+    cheapest: "72,000,000 ISK",
+    method: "Buy",
+  },
 ];
 
 const columns: DataTableColumn<BreakdownRow>[] = [
   { key: "item", header: "Item", render: (row) => row.item },
-  { key: "required", header: "Required", align: "right", render: (row) => row.required },
-  { key: "buildCost", header: "Build Cost", align: "right", render: (row) => row.buildCost },
-  { key: "buyCost", header: "Buy Cost", align: "right", render: (row) => row.buyCost },
+  {
+    key: "required",
+    header: "Required",
+    align: "right",
+    render: (row) => row.required,
+  },
+  {
+    key: "buildCost",
+    header: "Build Cost",
+    align: "right",
+    render: (row) => row.buildCost,
+  },
+  {
+    key: "buyCost",
+    header: "Buy Cost",
+    align: "right",
+    render: (row) => row.buyCost,
+  },
   {
     key: "cheapest",
     header: "Cheapest",
     align: "right",
-    render: (row) => <span className="data-table__cell--positive">{row.cheapest}</span>,
+    render: (row) => (
+      <span className="data-table__cell--positive">{row.cheapest}</span>
+    ),
   },
   { key: "method", header: "Method", render: (row) => row.method },
 ];
@@ -79,7 +138,11 @@ export default function ManufacturingPlannerPage() {
               <input id="build-time" readOnly value="1d 14h 32m" />
             </Field>
 
-            <Metric label="Total Cost (Cheapest)" value="1,283,721,512 ISK" tone="positive" />
+            <Metric
+              label="Total Cost (Cheapest)"
+              value="1,283,721,512 ISK"
+              tone="positive"
+            />
           </PanelBody>
         </Panel>
 
@@ -87,14 +150,32 @@ export default function ManufacturingPlannerPage() {
           <PanelHeader title="Build Tree" />
           <BuildTree>
             <TreeNode name="Raven Navy Issue" price="1,283,721,512 ISK" />
-            <TreeNode name="Raven Navy Issue Blueprint" quantity="x1" price="68,500,000 ISK" method="buy" />
-            <TreeNode name="Capital Construction Parts" quantity="x40" price="842,112,000 ISK" method="build" />
-            <TreeNode name="Fusion Thruster" quantity="x4" price="146,872,000 ISK" method="build" />
+            <TreeNode
+              name="Raven Navy Issue Blueprint"
+              quantity="x1"
+              price="68,500,000 ISK"
+              method="buy"
+            />
+            <TreeNode
+              name="Capital Construction Parts"
+              quantity="x40"
+              price="842,112,000 ISK"
+              method="build"
+            />
+            <TreeNode
+              name="Fusion Thruster"
+              quantity="x4"
+              price="146,872,000 ISK"
+              method="build"
+            />
           </BuildTree>
         </Panel>
 
         <Panel className={styles.facility}>
-          <PanelHeader title="Facility Selection" actions={<Button variant="default">Change</Button>} />
+          <PanelHeader
+            title="Facility Selection"
+            actions={<Button variant="default">Change</Button>}
+          />
           <PanelBody>
             <Field label="Selected Facility" htmlFor="facility">
               <select id="facility" defaultValue="azbel">
@@ -120,11 +201,17 @@ export default function ManufacturingPlannerPage() {
           <PanelBody>
             <Metric label="Manufacturing Jobs" value="23" />
             <Metric label="Total Build Time" value="1d 14h 32m" />
-            <Metric label="Total Build Cost" value="1,283,721,512 ISK" tone="positive" />
+            <Metric
+              label="Total Build Cost"
+              value="1,283,721,512 ISK"
+              tone="positive"
+            />
             <Metric label="Total Install Cost" value="12,837,215 ISK" />
-            <Button variant="primary" fullWidth>
-              Export to ESI
-            </Button>
+            <div className={styles.bottomAlign}>
+              <Button variant="primary" fullWidth>
+                Export to ESI
+              </Button>
+            </div>
           </PanelBody>
         </Panel>
 
