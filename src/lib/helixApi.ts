@@ -1,4 +1,5 @@
-const BASE = "/backend/cortex/auth";
+const BACKEND = process.env.NEXT_PUBLIC_HELIX_BACKEND_URL;
+const BASE = `${BACKEND}/cortex/auth`;
 
 export type CortexCharacter = {
   id: string;
@@ -65,7 +66,9 @@ export type SystemStatusValue = 1 | 2 | 3 | "unreachable" | "unknown";
 
 export async function fetchSystemStatus(): Promise<SystemStatusValue> {
   try {
-    const res = await fetch("/backend/cortex/status");
+    const res = await fetch(`${BACKEND}/cortex/status`, {
+      credentials: "include",
+    });
     if (!res.ok) return "unreachable";
     const json = await res.json();
     const status = json?.data?.status;
