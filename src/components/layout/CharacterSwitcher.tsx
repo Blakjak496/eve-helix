@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown, Plus, X } from "lucide-react";
-import clsx from "clsx";
 
-import { linkCharacterUrl } from "@/lib/cortexApi";
+import { linkCharacter } from "@/lib/cortexApi";
 import { useCortexSession } from "@/components/providers/CortexSessionProvider";
 import { StatusIndicator } from "@/components/ui/StatusIndicator";
 
@@ -13,13 +12,9 @@ function portraitUrl(eveCharacterId: number, size = 64): string {
   return `https://images.evetech.net/characters/${eveCharacterId}/portrait?size=${size}`;
 }
 
-// The single active_character_id action-oriented tools read server-side -
-// this dropdown is the only thing that ever changes it (see the brief's
-// "Session / active character" section). Switching is instant: every
-// linked character's tokens already live in the DB regardless of which
-// one is active, so this is just a session update, no re-auth.
 export function CharacterSwitcher() {
-  const { session, switchActiveCharacter, unlinkCharacter } = useCortexSession();
+  const { session, switchActiveCharacter, unlinkCharacter } =
+    useCortexSession();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +40,9 @@ export function CharacterSwitcher() {
 
   if (!session) return null;
 
-  const active = session.characters.find((c) => c.id === session.activeCharacterId);
+  const active = session.characters.find(
+    (c) => c.id === session.activeCharacterId,
+  );
 
   return (
     <div className="character-switcher" ref={rootRef}>
@@ -78,10 +75,7 @@ export function CharacterSwitcher() {
           {session.characters.map((character) => (
             <div
               key={character.id}
-              className={clsx(
-                "character-switcher__item",
-                character.id === session.activeCharacterId && "active",
-              )}
+              className={`character-switcher__item ${character.id === session.activeCharacterId ? "active" : ""}`}
             >
               <button
                 type="button"
@@ -100,7 +94,9 @@ export function CharacterSwitcher() {
                   width={24}
                   height={24}
                 />
-                <span className="character-switcher__item-name">{character.eveCharacterName}</span>
+                <span className="character-switcher__item-name">
+                  {character.eveCharacterName}
+                </span>
                 {character.needsRelink ? (
                   <span className="nav-item__badge">Relink</span>
                 ) : null}
@@ -116,10 +112,14 @@ export function CharacterSwitcher() {
             </div>
           ))}
 
-          <a className="character-switcher__add" href={linkCharacterUrl()}>
+          <button
+            type="button"
+            className="character-switcher__add"
+            onClick={linkCharacter}
+          >
             <Plus size={14} />
             <span>Add character</span>
-          </a>
+          </button>
         </div>
       ) : null}
     </div>

@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import clsx from "clsx";
 
 type TreeNodeMethod = "build" | "buy" | "mixed" | "invention";
 
@@ -13,9 +12,9 @@ interface TreeNodeProps {
 
 export function TreeNode({ name, quantity, price, imageSrc, method }: TreeNodeProps) {
   return (
-    <div className={clsx("tree-node", method && `tree-node--${method}`)}>
+    <div className={`tree-node ${method ? `tree-node--${method}` : ""}`}>
       {imageSrc ? (
-        // EVE item renders come from ESI/image servers, not local assets.
+        // ESI item renders, not a local/optimizable asset - plain img is correct here
         // eslint-disable-next-line @next/next/no-img-element
         <img src={imageSrc} alt="" />
       ) : null}

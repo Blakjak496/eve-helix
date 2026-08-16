@@ -26,7 +26,9 @@ type CortexSessionContextValue = {
   unlinkCharacter: (characterId: string) => Promise<void>;
 };
 
-const CortexSessionContext = createContext<CortexSessionContextValue | null>(null);
+const CortexSessionContext = createContext<CortexSessionContextValue | null>(
+  null,
+);
 
 export function CortexSessionProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<CortexSession | null>(null);
@@ -38,9 +40,6 @@ export function CortexSessionProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    // Guards against setting state after unmount, per React's own
-    // documented pattern for data-fetching effects:
-    // https://react.dev/learn/synchronizing-with-effects#fetching-data
     let ignore = false;
 
     fetchSession()
@@ -54,9 +53,6 @@ export function CortexSessionProvider({ children }: { children: ReactNode }) {
     return () => {
       ignore = true;
     };
-    // Only on mount - callers that change session state (login redirect
-    // landing, switch, unlink, logout) call refresh()/update state
-    // themselves rather than relying on this effect re-running.
   }, []);
 
   const logout = useCallback(async () => {
@@ -86,7 +82,14 @@ export function CortexSessionProvider({ children }: { children: ReactNode }) {
 
   return (
     <CortexSessionContext.Provider
-      value={{ session, loading, refresh, logout, switchActiveCharacter, unlinkCharacter }}
+      value={{
+        session,
+        loading,
+        refresh,
+        logout,
+        switchActiveCharacter,
+        unlinkCharacter,
+      }}
     >
       {children}
     </CortexSessionContext.Provider>
@@ -95,6 +98,9 @@ export function CortexSessionProvider({ children }: { children: ReactNode }) {
 
 export function useCortexSession(): CortexSessionContextValue {
   const ctx = useContext(CortexSessionContext);
-  if (!ctx) throw new Error("useCortexSession must be used within a CortexSessionProvider");
+  if (!ctx)
+    throw new Error(
+      "useCortexSession must be used within a CortexSessionProvider",
+    );
   return ctx;
 }

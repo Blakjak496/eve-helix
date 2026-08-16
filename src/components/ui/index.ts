@@ -6,3 +6,4 @@ export { Field } from "./Field";
 export { DataGrid, Metric } from "./Metric";
 export { Panel, PanelBody, PanelHeader } from "./Panel";
 export { StatusIndicator } from "./StatusIndicator";
+export { SystemStatus } from "./SystemStatus";

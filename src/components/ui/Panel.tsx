@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import clsx from "clsx";
 
 interface PanelProps extends HTMLAttributes<HTMLElement> {
   /** Applies the cyan "active" HUD treatment (border + glow). */
@@ -9,7 +8,10 @@ interface PanelProps extends HTMLAttributes<HTMLElement> {
 
 export function Panel({ active, className, children, ...props }: PanelProps) {
   return (
-    <section className={clsx("panel", active && "panel--active", className)} {...props}>
+    <section
+      className={`panel ${active ? "panel--active" : ""} ${className ?? ""}`}
+      {...props}
+    >
       {children}
     </section>
   );
@@ -35,7 +37,7 @@ export function PanelBody({
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={clsx("panel-body", className)} {...props}>
+    <div className={`panel-body ${className ?? ""}`} {...props}>
       {children}
     </div>
   );

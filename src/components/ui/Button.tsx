@@ -1,5 +1,4 @@
 import type { ButtonHTMLAttributes } from "react";
-import clsx from "clsx";
 
 type ButtonVariant = "default" | "primary" | "danger";
 
@@ -19,12 +18,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={clsx(
-        "button",
-        variant !== "default" && `button--${variant}`,
-        fullWidth && "button--full",
-        className,
-      )}
+      className={`button ${variant !== "default" ? `button--${variant}` : ""} ${fullWidth ? "button--full" : ""} ${className ?? ""}`}
       {...props}
     />
   );

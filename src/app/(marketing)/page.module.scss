@@ -1,0 +1,97 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 1600px;
+  row-gap: 3rem;
+  .hero {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.8rem;
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    h5 {
+      max-width: 480px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .loginButton {
+      cursor: pointer;
+    }
+  }
+
+  .textCyan {
+    color: var(--cyan);
+  }
+
+  hr {
+    width: 95%;
+    border-color: var(--cyan);
+    border-bottom: none;
+  }
+
+  .content {
+    width: 95%;
+    align-self: center;
+  }
+
+  .toolsCards {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 0.875rem;
+    row-gap: 0.875rem;
+    flex-wrap: wrap;
+
+    .toolCard {
+      width: 30%;
+    }
+
+    .toolCardContent {
+      display: flex;
+      flex-direction: column;
+      padding: 0.875rem;
+      row-gap: 0.875rem;
+
+      .toolCardHeader {
+        font-size: 0.875rem;
+      }
+
+      .toolCardText {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+      }
+    }
+  }
+
+  h2 {
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 800px) {
+    .hero {
+      h5 {
+        max-width: 100%;
+      }
+    }
+
+    .toolsCards {
+      .toolCard {
+        width: 45%;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .toolsCards {
+      .toolCard {
+        width: 100%;
+      }
+    }
+  }
+}

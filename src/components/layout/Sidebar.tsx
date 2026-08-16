@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import clsx from "clsx";
 
 import { navigation } from "@/config/navigation";
 
@@ -20,15 +19,22 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
     <>
       <button
         type="button"
-        className={clsx("sidebar-backdrop", open && "visible")}
+        className={`sidebar-backdrop ${open ? "visible" : ""}`}
         aria-label="Close navigation"
         tabIndex={open ? 0 : -1}
         onClick={onClose}
       />
 
-      <aside className={clsx("sidebar", open && "open")} aria-label="Main navigation">
+      <aside
+        className={`sidebar ${open ? "open" : ""}`}
+        aria-label="Main navigation"
+      >
         <div className="sidebar-search">
-          <input type="search" placeholder="Search Tools... ⌘K" aria-label="Search tools" />
+          <input
+            type="search"
+            placeholder="Search Tools... ⌘K"
+            aria-label="Search tools"
+          />
         </div>
 
         <nav>
@@ -60,7 +66,7 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={clsx("nav-item", isActive && "active")}
+                    className={`nav-item ${isActive ? "active" : ""}`}
                   >
                     <span className="icon">
                       <Icon size={16} />

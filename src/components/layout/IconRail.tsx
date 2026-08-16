@@ -11,7 +11,6 @@ import {
   SquareTerminal,
   Wallet,
 } from "lucide-react";
-import clsx from "clsx";
 
 // Decorative quick-launch strip matching the mockup's leftmost icon
 // column. Not wired to routing yet — treat as a placeholder until the
@@ -35,7 +34,7 @@ export function IconRail() {
         <button
           key={label}
           type="button"
-          className={clsx("icon-rail__item", active && "active")}
+          className={`icon-rail__item ${active ? "active" : ""}`}
           aria-label={label}
           title={label}
         >

@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import clsx from "clsx";
 
 type MetricTone = "default" | "positive" | "warning" | "danger";
 
@@ -11,7 +10,7 @@ interface MetricProps {
 
 export function Metric({ label, value, tone = "default" }: MetricProps) {
   return (
-    <div className={clsx("metric", tone !== "default" && `metric--${tone}`)}>
+    <div className={`metric ${tone !== "default" ? `metric--${tone}` : ""}`}>
       <span className="metric__label">{label}</span>
       <span className="metric__value">{value}</span>
     </div>

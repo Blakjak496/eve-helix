@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 
-import { AppShell } from "@/components/layout/AppShell";
 import { CortexSessionProvider } from "@/components/providers/CortexSessionProvider";
 
 import { inter, rajdhani, robotoMono } from "./fonts";
 import "./globals.scss";
 
 export const metadata: Metadata = {
-  title: "Nox Tools",
-  description: "EVE Online tools",
+  title: "EVE Cortex",
+  description: "EVE Online Companion Tools",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -18,9 +17,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${rajdhani.variable} ${inter.variable} ${robotoMono.variable}`}
     >
       <body>
-        <CortexSessionProvider>
-          <AppShell>{children}</AppShell>
-        </CortexSessionProvider>
+        <CortexSessionProvider>{children}</CortexSessionProvider>
       </body>
     </html>
   );

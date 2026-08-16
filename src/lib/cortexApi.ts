@@ -1,8 +1,3 @@
-// Thin client for equinox-backend's Cortex auth endpoints. Every call goes
-// through /backend/* (see next.config.ts's rewrite) so it's same-origin
-// from the browser's point of view - the session cookie equinox-backend
-// sets just works, no CORS/credentials wrangling needed here.
-
 const BASE = "/backend/cortex/auth";
 
 export type CortexCharacter = {
@@ -22,15 +17,14 @@ export type CortexSession = {
   characters: CortexCharacter[];
 };
 
-// Full-page navigations, not fetches - these start the SSO redirect dance,
-// which has to leave nox-tools's origin entirely (to login.eveonline.com)
-// and come back via equinox-backend's callback.
-export function loginUrl(): string {
-  return `${BASE}/login`;
+export function login(): void {
+  // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+  window.location.href = `${BASE}/login`;
 }
 
-export function linkCharacterUrl(): string {
-  return `${BASE}/link`;
+export function linkCharacter(): void {
+  // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+  window.location.href = `${BASE}/link`;
 }
 
 export async function fetchSession(): Promise<CortexSession | null> {
@@ -55,7 +49,9 @@ export async function setActiveCharacter(characterId: string): Promise<void> {
   if (!res.ok) throw new Error(`Failed to switch character (${res.status})`);
 }
 
-export async function unlinkCharacter(characterId: string): Promise<{ loggedOut: boolean }> {
+export async function unlinkCharacter(
+  characterId: string,
+): Promise<{ loggedOut: boolean }> {
   const res = await fetch(`${BASE}/characters/${characterId}`, {
     method: "DELETE",
     credentials: "include",
@@ -63,4 +59,18 @@ export async function unlinkCharacter(characterId: string): Promise<{ loggedOut:
   if (!res.ok) throw new Error(`Failed to unlink character (${res.status})`);
   const json = await res.json();
   return { loggedOut: Boolean(json.loggedOut) };
+}
+
+export type SystemStatusValue = 1 | 2 | 3 | "unreachable" | "unknown";
+
+export async function fetchSystemStatus(): Promise<SystemStatusValue> {
+  try {
+    const res = await fetch("/backend/cortex/status");
+    if (!res.ok) return "unreachable";
+    const json = await res.json();
+    const status = json?.data?.status;
+    return status === 1 || status === 2 || status === 3 ? status : "unknown";
+  } catch {
+    return "unreachable";
+  }
 }

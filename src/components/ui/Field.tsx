@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import clsx from "clsx";
 
 interface FieldProps {
   label: string;
@@ -11,7 +10,7 @@ interface FieldProps {
 
 export function Field({ label, htmlFor, readOnly, className, children }: FieldProps) {
   return (
-    <div className={clsx("field", readOnly && "field--readonly", className)}>
+    <div className={`field ${readOnly ? "field--readonly" : ""} ${className ?? ""}`}>
       <label htmlFor={htmlFor}>{label}</label>
       {children}
     </div>
