@@ -15,7 +15,7 @@ import {
   setActiveCharacter as apiSetActiveCharacter,
   unlinkCharacter as apiUnlinkCharacter,
   type CortexSession,
-} from "@/lib/cortexApi";
+} from "@/lib/helixApi";
 
 type CortexSessionContextValue = {
   session: CortexSession | null;

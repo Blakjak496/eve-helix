@@ -12,7 +12,7 @@ import {
 
 import Image from "next/image";
 
-import { login } from "@/lib/cortexApi";
+import { login } from "@/lib/helixApi";
 import { useCortexSession } from "@/components/providers/CortexSessionProvider";
 import { CharacterSwitcher } from "@/components/layout/CharacterSwitcher";
 

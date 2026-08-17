@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown, Plus, X } from "lucide-react";
 
-import { linkCharacter } from "@/lib/cortexApi";
+import { linkCharacter } from "@/lib/helixApi";
 import { useCortexSession } from "@/components/providers/CortexSessionProvider";
 import { StatusIndicator } from "@/components/ui/StatusIndicator";
 

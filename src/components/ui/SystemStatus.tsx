@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { fetchSystemStatus, type SystemStatusValue } from "@/lib/cortexApi";
+import { fetchSystemStatus, type SystemStatusValue } from "@/lib/helixApi";
 import { StatusIndicator } from "@/components/ui/StatusIndicator";
 
 const STATUS_TEXT: Record<SystemStatusValue, string> = {
