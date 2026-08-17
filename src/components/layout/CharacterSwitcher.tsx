@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ChevronDown, Plus, X } from "lucide-react";
 
 import { linkCharacter } from "@/lib/helixApi";
-import { useCortexSession } from "@/components/providers/CortexSessionProvider";
+import { useHelixSession } from "@/components/providers/HelixSessionProvider";
 import { StatusIndicator } from "@/components/ui/StatusIndicator";
 
 function portraitUrl(eveCharacterId: number, size = 64): string {
@@ -13,8 +13,7 @@ function portraitUrl(eveCharacterId: number, size = 64): string {
 }
 
 export function CharacterSwitcher() {
-  const { session, switchActiveCharacter, unlinkCharacter } =
-    useCortexSession();
+  const { session, switchActiveCharacter, unlinkCharacter } = useHelixSession();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 

@@ -1,7 +1,7 @@
 const BACKEND = process.env.NEXT_PUBLIC_HELIX_BACKEND_URL;
 const BASE = `${BACKEND}/auth`;
 
-export type CortexCharacter = {
+export type HelixCharacter = {
   id: string;
   eveCharacterId: number;
   eveCharacterName: string;
@@ -12,10 +12,10 @@ export type CortexCharacter = {
   linkedAt: string;
 };
 
-export type CortexSession = {
+export type HelixSession = {
   accountId: string;
   activeCharacterId: string;
-  characters: CortexCharacter[];
+  characters: HelixCharacter[];
 };
 
 export function login(): void {
@@ -28,12 +28,12 @@ export function linkCharacter(): void {
   window.location.href = `${BASE}/link`;
 }
 
-export async function fetchSession(): Promise<CortexSession | null> {
+export async function fetchSession(): Promise<HelixSession | null> {
   const res = await fetch(`${BASE}/me`, { credentials: "include" });
   if (res.status === 401) return null;
   if (!res.ok) throw new Error(`Failed to load session (${res.status})`);
   const json = await res.json();
-  return json.data as CortexSession;
+  return json.data as HelixSession;
 }
 
 export async function logout(): Promise<void> {

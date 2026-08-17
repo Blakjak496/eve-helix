@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 
 import { login } from "@/lib/helixApi";
-import { useCortexSession } from "@/components/providers/CortexSessionProvider";
+import { useHelixSession } from "@/components/providers/HelixSessionProvider";
 import { CharacterSwitcher } from "@/components/layout/CharacterSwitcher";
 
 interface TopBarProps {
@@ -23,7 +23,7 @@ interface TopBarProps {
 
 const AUTH_ERROR_MESSAGES: Record<string, string> = {
   character_linked_elsewhere:
-    "That character is already linked to another EVE Cortex login.",
+    "That character is already linked to another EVE Helix login.",
   sso_denied: "EVE SSO login was cancelled.",
   invalid_state: "Login session expired - please try again.",
   sso_failed: "EVE SSO login failed - please try again.",
@@ -53,7 +53,7 @@ function useAuthErrorFromUrl(): string | null {
 }
 
 export function TopBar({ navOpen = false, onMenuClick }: TopBarProps) {
-  const { session, loading, logout } = useCortexSession();
+  const { session, loading, logout } = useHelixSession();
   const authError = useAuthErrorFromUrl();
 
   return (
@@ -72,10 +72,10 @@ export function TopBar({ navOpen = false, onMenuClick }: TopBarProps) {
 
       <div className="brand">
         <div className="brand-logo">
-          <Image src="/cortex-logo.png" fill alt="Cortex Brand Logo" />
+          <Image src="/Helix-logo.png" fill alt="Helix Brand Logo" />
         </div>
         <div className="brand-text">
-          EVE<span className="subtitle">Cortex</span>
+          EVE<span className="subtitle">Helix</span>
         </div>
       </div>
 

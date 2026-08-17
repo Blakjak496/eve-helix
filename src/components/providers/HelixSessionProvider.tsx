@@ -14,11 +14,11 @@ import {
   logout as apiLogout,
   setActiveCharacter as apiSetActiveCharacter,
   unlinkCharacter as apiUnlinkCharacter,
-  type CortexSession,
+  type HelixSession,
 } from "@/lib/helixApi";
 
-type CortexSessionContextValue = {
-  session: CortexSession | null;
+type HelixSessionContextValue = {
+  session: HelixSession | null;
   loading: boolean;
   refresh: () => Promise<void>;
   logout: () => Promise<void>;
@@ -26,12 +26,12 @@ type CortexSessionContextValue = {
   unlinkCharacter: (characterId: string) => Promise<void>;
 };
 
-const CortexSessionContext = createContext<CortexSessionContextValue | null>(
+const HelixSessionContext = createContext<HelixSessionContextValue | null>(
   null,
 );
 
-export function CortexSessionProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<CortexSession | null>(null);
+export function HelixSessionProvider({ children }: { children: ReactNode }) {
+  const [session, setSession] = useState<HelixSession | null>(null);
   const [loading, setLoading] = useState(true);
 
   const refresh = useCallback(async () => {
@@ -81,7 +81,7 @@ export function CortexSessionProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <CortexSessionContext.Provider
+    <HelixSessionContext.Provider
       value={{
         session,
         loading,
@@ -92,15 +92,15 @@ export function CortexSessionProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </CortexSessionContext.Provider>
+    </HelixSessionContext.Provider>
   );
 }
 
-export function useCortexSession(): CortexSessionContextValue {
-  const ctx = useContext(CortexSessionContext);
+export function useHelixSession(): HelixSessionContextValue {
+  const ctx = useContext(HelixSessionContext);
   if (!ctx)
     throw new Error(
-      "useCortexSession must be used within a CortexSessionProvider",
+      "useHelixSession must be used within a HelixSessionProvider",
     );
   return ctx;
 }
