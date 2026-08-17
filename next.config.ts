@@ -7,8 +7,10 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "images.evetech.net" }],
+    unoptimized: true,
   },
+
+  output: "export",
 };
 
 export default nextConfig;
