@@ -14,7 +14,6 @@ import {
   IconCrosshair,
   IconUsers,
 } from "@tabler/icons-react";
-import Faq from "@/components/ui/Faq/Faq";
 
 export default function LandingPage() {
   return (
