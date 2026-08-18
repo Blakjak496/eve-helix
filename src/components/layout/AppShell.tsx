@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { IconRail } from "@/components/layout/IconRail";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { TopBar } from "@/components/layout/TopBar";
+import BottomBar from "@/components/layout/BottomBar";
 
 interface AppShellProps {
   children: ReactNode;
@@ -40,7 +41,10 @@ export function AppShell({ children }: AppShellProps) {
       />
       <IconRail />
       <Sidebar open={navOpen} onClose={() => setNavOpen(false)} />
-      <main className="workspace">{children}</main>
+      <main className="workspace">
+        {children}
+        <BottomBar />
+      </main>
     </div>
   );
 }

@@ -93,6 +93,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  column-gap: 10px;
   width: var(--sidebar-width);
 
   color: white;
@@ -107,7 +108,7 @@
   .brand-logo {
     position: relative;
     height: 3rem;
-    width: 4.5rem;
+    width: 2.86rem;
   }
 
   .brand-text {
@@ -144,6 +145,16 @@
   .login-button {
     cursor: pointer;
   }
+}
+
+// ============================================================
+// BOTTOM BAR
+// ============================================================
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  padding: 1rem;
 }
 
 // ============================================================
@@ -560,7 +571,7 @@
 .workspace {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   z-index: 1;
 
   min-width: 0;
@@ -571,6 +582,17 @@
   padding: 1.5rem;
 
   scrollbar-color: var(--cyan-dim) transparent;
+
+  > * {
+    max-width: 100%;
+  }
+}
+
+// public-shell's content (landing page) has its own max-width and no
+// self-centering margin, so it needs the parent to center it - the app
+// shell's pages want their content to stretch full width instead
+.public-shell .workspace {
+  align-items: center;
 }
 
 .page-header {

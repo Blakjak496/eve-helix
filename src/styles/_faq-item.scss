@@ -1,0 +1,27 @@
+.faq-item {
+  display: flex;
+  position: relative;
+  max-height: 2rem;
+  cursor: pointer;
+  overflow: hidden;
+
+  &.open {
+    max-height: 10rem;
+  }
+}
+
+.x-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  bottom: 50%;
+  width: 0.8125rem;
+  fill: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-50%) rotate(45deg);
+  transition: 0.3s transform ease;
+
+  &.open {
+    transform: translateY(-50%) rotate(0);
+  }
+}

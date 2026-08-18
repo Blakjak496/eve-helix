@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import {
-  FileText,
-  LogOut,
-  Menu,
-  MessagesSquare,
-  Settings,
-  X,
-} from "lucide-react";
+  IconX,
+  IconSettings,
+  IconBrandDiscord,
+  IconLogout,
+  IconMenu2,
+} from "@tabler/icons-react";
 
 import Image from "next/image";
 
@@ -66,13 +65,13 @@ export function TopBar({ navOpen = false, onMenuClick }: TopBarProps) {
           aria-expanded={navOpen}
           onClick={onMenuClick}
         >
-          {navOpen ? <X size={18} /> : <Menu size={18} />}
+          {navOpen ? <IconX size={18} /> : <IconMenu2 size={18} />}
         </button>
       ) : null}
 
       <div className="brand">
         <div className="brand-logo">
-          <Image src="/Helix-logo.png" fill alt="Helix Brand Logo" />
+          <Image src="/helix-logo.png" fill alt="Helix Brand Logo" />
         </div>
         <div className="brand-text">
           EVE<span className="subtitle">Helix</span>
@@ -86,21 +85,17 @@ export function TopBar({ navOpen = false, onMenuClick }: TopBarProps) {
           target="_blank"
           rel="noreferrer"
         >
-          <MessagesSquare size={16} />
+          <IconBrandDiscord size={16} />
           <span>Discord</span>
         </a>
-        <a className="topbar-button" href="/docs">
-          <FileText size={16} />
-          <span>Docs</span>
-        </a>
         <button type="button" className="topbar-button">
-          <Settings size={16} />
+          <IconSettings size={16} />
           <span>Settings</span>
         </button>
         {session ? <CharacterSwitcher /> : null}
         {!loading && session ? (
           <button type="button" className="button" onClick={() => logout()}>
-            <LogOut size={14} />
+            <IconLogout size={14} />
             <span>Logout</span>
           </button>
         ) : !loading ? (
